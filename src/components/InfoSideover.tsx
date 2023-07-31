@@ -20,7 +20,7 @@ const getAlgoInfo = (type: SearchingAlgoEnum | null) => {
         description: <DijkstraDescription />,
         guaranteedShortedPath: true,
         referenceLink: `https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm`,
-        gif: `/assets/dijkstra.gif`,
+        gif: `./assets/dijkstra.gif`,
       };
 
     case SearchingAlgoEnum.BFS:
@@ -29,7 +29,7 @@ const getAlgoInfo = (type: SearchingAlgoEnum | null) => {
         description: <BreadthFirstSearchDescription />,
         guaranteedShortedPath: true,
         referenceLink: `https://pt.wikipedia.org/wiki/Busca_em_largura`,
-        gif: `/assets/bfs.gif`,
+        gif: `./assets/bfs.gif`,
       };
 
     case SearchingAlgoEnum.DFS:
@@ -38,7 +38,7 @@ const getAlgoInfo = (type: SearchingAlgoEnum | null) => {
         description: <DepthFirstSearchDescription />,
         guaranteedShortedPath: false,
         referenceLink: `https://pt.wikipedia.org/wiki/Busca_em_profundidade`,
-        gif: `/assets/dfs.gif`,
+        gif: `./assets/dfs.gif`,
       };
 
     default:
