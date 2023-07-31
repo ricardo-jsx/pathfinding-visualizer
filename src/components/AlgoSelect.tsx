@@ -7,47 +7,36 @@ import { classNames } from "~/utils/helpers";
 
 type AlgoSelectProps = {
   selectedAlgo: AlgorithmOption | null;
-  onSelect: (algo: AlgorithmOption) => void; 
-}
+  onSelect: (algo: AlgorithmOption) => void;
+};
 
 const AlgoSelect: React.FC<AlgoSelectProps> = ({ selectedAlgo, onSelect }) => {
   const algoOptions = [
-      {
-        name: "Algoritmo de Dijkstra's",
-        type: SearchingAlgoEnum.DIJKSTRA,
-      },
-      {
-        name: "Busca em Largura",
-        type: SearchingAlgoEnum.BFS,
-      },
-      {
-        name: "Busca em Profundidade",
-        type: SearchingAlgoEnum.DFS,
-      },
-  ] as const
+    {
+      name: "Algoritmo de Dijkstra's",
+      type: SearchingAlgoEnum.DIJKSTRA,
+    },
+    {
+      name: "Busca em Largura",
+      type: SearchingAlgoEnum.BFS,
+    },
+    {
+      name: "Busca em Profundidade",
+      type: SearchingAlgoEnum.DFS,
+    },
+  ] as const;
 
   return (
-    <Listbox
-      value={selectedAlgo}
-      onChange={(algo) => algo && onSelect(algo)}
-    >
+    <Listbox value={selectedAlgo} onChange={(algo) => algo && onSelect(algo)}>
       {({ open }) => (
         <>
           <div className="relative mt-1 ml-4 md:ml-0 flex min-w-[350px] justify-start items-center gap-4">
             <Listbox.Button className="relative w-full cursor-default border-b-[1px] border-b-gray-400 bg-gray-900 py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none sm:text-sm">
-              <span
-                className={classNames(
-                  selectedAlgo ? "text-white" : "text-gray-400",
-                  "block truncate"
-                )}
-              >
+              <span className={classNames(selectedAlgo ? "text-white" : "text-gray-400", "block truncate")}>
                 {selectedAlgo?.name || "Selecione um algoritmo"}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
+                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
             </Listbox.Button>
 
@@ -74,9 +63,7 @@ const AlgoSelect: React.FC<AlgoSelectProps> = ({ selectedAlgo, onSelect }) => {
                       <>
                         <span
                           className={classNames(
-                            algo.type === selectedAlgo?.type
-                              ? "font-semibold"
-                              : "font-normal",
+                            algo.type === selectedAlgo?.type ? "font-semibold" : "font-normal",
                             "block truncate"
                           )}
                         >

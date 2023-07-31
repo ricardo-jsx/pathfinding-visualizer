@@ -70,7 +70,7 @@ export const InfoSideOver: React.FC<Props> = ({ algorithm, onClose }) => {
         >
           <div className="fixed inset-0 bg-gray-900 bg-opacity-30 transition-opacity" />
         </Transition.Child>
-        
+
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
@@ -130,15 +130,11 @@ export const InfoSideOver: React.FC<Props> = ({ algorithm, onClose }) => {
                             </p>
                             <span
                               className={classNames(
-                                info.guaranteedShortedPath
-                                  ? "bg-green-100 text-green-800"
-                                  : "bg-red-100 text-red-800",
+                                info.guaranteedShortedPath ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800",
                                 "inline-flex mt-2 items-center rounded-full px-3.5 py-1.5 text-xs font-medium"
                               )}
                             >
-                              {info?.guaranteedShortedPath
-                                ? "Garantido"
-                                : "Não garantido"}
+                              {info?.guaranteedShortedPath ? "Garantido" : "Não garantido"}
                             </span>
                           </div>
                           <div>

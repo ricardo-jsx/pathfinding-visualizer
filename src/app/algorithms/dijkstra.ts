@@ -17,13 +17,11 @@ const getNeighbors = (currentCell: CellInterface, grid: CellInterface[][]) => {
   return neighbors.filter((n) => !n?.isVisited);
 };
 
-export const dijkstra = (
-  grid: CellInterface[][],
-  startCell: CellInterface,
-  endCell: CellInterface
-) => {
+export const dijkstra = (grid: CellInterface[][], startCell: CellInterface, endCell: CellInterface) => {
   const startTime = Date.now();
-  const unvisitedCells = new PriorityQueue<CellInterface>((cellA, cellB) => cellA.distanceFromStart - cellB.distanceFromStart);
+  const unvisitedCells = new PriorityQueue<CellInterface>(
+    (cellA, cellB) => cellA.distanceFromStart - cellB.distanceFromStart
+  );
   const visitedCells: CellInterface[] = [];
 
   startCell.distanceFromStart = 0;

@@ -19,7 +19,7 @@ import AlgoSelect from "./AlgoSelect";
 import Cell from "./Cell";
 import { GithubLogo } from "./GithubLogo";
 import { InfoSideOver } from "./InfoSideover";
-import Modal from './Modal';
+import Modal from "./Modal";
 import StatsSection from "./StatsSection";
 
 const GridBoard = () => {
@@ -37,9 +37,7 @@ const GridBoard = () => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [renderFlag, setRenderFlag] = useState(false);
 
-  const [selectedAlgo, setSelectedAlgo] = useState<AlgorithmOption | null>(
-    null
-  );
+  const [selectedAlgo, setSelectedAlgo] = useState<AlgorithmOption | null>(null);
 
   const [showInfoOf, setShowInfoOf] = useState<SearchingAlgoEnum | null>(null);
 
@@ -58,7 +56,7 @@ const GridBoard = () => {
           algorithm: 10,
           path: 20,
         };
-        
+
       case "slow":
         return {
           algorithm: 100,
@@ -88,11 +86,7 @@ const GridBoard = () => {
   };
 
   const clearPath = () => {
-    gridBoardCells.current = getCellObjects(
-      true,
-      false,
-      gridBoardCells.current
-    ); // only reset path and ignore walls
+    gridBoardCells.current = getCellObjects(true, false, gridBoardCells.current); // only reset path and ignore walls
     resetBoardData();
   };
 
@@ -105,11 +99,7 @@ const GridBoard = () => {
     element[colIndex].isWall = !element[colIndex].isWall;
   };
 
-  const onCellClick = (
-    cell: CellInterface,
-    rowIndex: number,
-    colIndex: number
-  ) => {
+  const onCellClick = (cell: CellInterface, rowIndex: number, colIndex: number) => {
     let clickedCell = gridBoardCells.current[rowIndex][colIndex];
     if (clickedCell.isWall) {
       clickedCell.isWall = false;
@@ -148,10 +138,7 @@ const GridBoard = () => {
     }
   };
 
-  const animateAlgo = (
-    visitedCells: CellInterface[],
-    path: CellInterface[]
-  ) => {
+  const animateAlgo = (visitedCells: CellInterface[], path: CellInterface[]) => {
     for (let i = 0; i < visitedCells.length; i++) {
       setTimeout(() => {
         const cell = visitedCells[i];
@@ -177,22 +164,22 @@ const GridBoard = () => {
 
   const visualizeAlgo = (type: SearchingAlgoEnum) => {
     if (!startPoint || !endPoint) {
-      setHasPathError(true)
+      setHasPathError(true);
       return;
     }
-    
+
     let grid = gridBoardCells.current;
     let start = grid[startPoint.row][startPoint.col];
     let end = grid[endPoint.row][endPoint.col];
     let visitedCells: CellInterface[] = [];
-    
+
     switch (type) {
       case SearchingAlgoEnum.DIJKSTRA:
         let [dCells, DTime] = dijkstra(grid, start, end) || [];
         visitedCells = dCells || [];
         setTimeTaken(DTime || 0);
         break;
-      
+
       case SearchingAlgoEnum.DFS:
         let [DFSCells, DFSTime] = DFS(grid, start, end) || [];
         visitedCells = DFSCells || [];
@@ -230,22 +217,15 @@ const GridBoard = () => {
       <div className="bg-gray-900 pt-4">
         <div className="mx-auto flex max-w-[80%] md:flex-row flex-col items-center justify-between">
           <div className="flex flex-1 flex-wrap md:flex-row flex-col gap-4 items-start md:items-center w-full justify-start space-x-4 mx-4">
-            <AlgoSelect
-              selectedAlgo={selectedAlgo}
-              onSelect={setSelectedAlgo}
-            />
+            <AlgoSelect selectedAlgo={selectedAlgo} onSelect={setSelectedAlgo} />
 
             <button
               disabled={!selectedAlgo}
-              onClick={() =>
-                selectedAlgo ? visualizeAlgo(selectedAlgo?.type) : null
-              }
+              onClick={() => (selectedAlgo ? visualizeAlgo(selectedAlgo?.type) : null)}
               className="items-center w-fit disabled:bg-indigo-400 disabled:cursor-not-allowed inline-flex bg-indigo-600 text-[15px] text-white px-4 py-2 rounded-md"
             >
               <RectangleGroupIcon className="h-5 w-5 mr-2" />{" "}
-              {selectedAlgo
-                ? `Visualizar ${selectedAlgo?.name}`
-                : "Selecione um algoritmo"}
+              {selectedAlgo ? `Visualizar ${selectedAlgo?.name}` : "Selecione um algoritmo"}
             </button>
 
             <button
@@ -269,13 +249,7 @@ const GridBoard = () => {
 
             <button
               onClick={() => {
-                setSpeed(
-                  speed === "fast"
-                    ? "medium"
-                    : speed === "medium"
-                    ? "slow"
-                    : "fast"
-                );
+                setSpeed(speed === "fast" ? "medium" : speed === "medium" ? "slow" : "fast");
               }}
               className="items-center w-fit disabled:bg-red-400 disabled:cursor-not-allowed inline-flex bg-red-500 text-[15px] text-white px-4 py-2 rounded-md"
             >
@@ -298,10 +272,7 @@ const GridBoard = () => {
             <CubeTransparentIcon className="h-5 w-5 mr-2" /> Gerar Labirinto
           </button>
 
-          <span
-            className="md:block hidden h-6 w-px bg-gray-600"
-            aria-hidden="true"
-          />
+          <span className="md:block hidden h-6 w-px bg-gray-600" aria-hidden="true" />
 
           <a
             href={"https://github.com/ricardo-jsx/pathfinding-visualizer"}
@@ -345,8 +316,7 @@ const GridBoard = () => {
               setShowInfoOf(selectedAlgo.type);
             }}
           >
-            Conheça mais sobre {selectedAlgo?.name}{" "}
-            <ArrowRightIcon className="h-5 w-5 ml-1 font-bold" />
+            Conheça mais sobre {selectedAlgo?.name} <ArrowRightIcon className="h-5 w-5 ml-1 font-bold" />
           </button>
         </div>
       ) : null}

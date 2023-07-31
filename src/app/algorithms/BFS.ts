@@ -50,4 +50,4 @@ export const BFS = (
   }
 
   return [visitedCells, Date.now() - startTime];
-}
+};

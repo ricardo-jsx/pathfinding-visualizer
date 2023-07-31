@@ -14,8 +14,10 @@ type Stat = {
 const StatsSection: React.FC<{ stats: Stat[] }> = ({ stats }) => {
   const listClasses = "m-4 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 w-full";
   const listItemClasses = "col-span-1 flex rounded-md shadow-sm";
-  const iconContainerClasses = "flex-shrink-0 flex items-center justify-center w-12 text-white text-2xl font-medium rounded-l-md bg-pink-600";
-  const dataContainerClasses = "flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white";
+  const iconContainerClasses =
+    "flex-shrink-0 flex items-center justify-center w-12 text-white text-2xl font-medium rounded-l-md bg-pink-600";
+  const dataContainerClasses =
+    "flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white";
   const textClasses = "flex-1 truncate px-4 py-2 text-sm";
   const buttonClasses = "font-medium text-gray-900 hover:text-gray-600";
 
